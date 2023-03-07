@@ -1,0 +1,27 @@
+{
+  "entrypoints": {
+    "app": {
+      "css": [
+        "http://localhost:8080/assets/app.css"
+      ],
+      "js": [
+        "http://localhost:8080/assets/app.js"
+      ]
+    },
+    "file_manager": {
+      "js": [
+        "http://localhost:8080/assets/file_manager.js"
+      ]
+    },
+    "tiptap_basic": {
+      "js": [
+        "http://localhost:8080/assets/tiptap_basic.js"
+      ]
+    },
+    "studio.posts.editor": {
+      "js": [
+        "http://localhost:8080/assets/studio.posts.editor.js"
+      ]
+    }
+  }
+}

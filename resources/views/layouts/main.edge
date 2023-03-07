@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="refresh" content="60">
+
+  @section('meta')
+    <title>Jagr</title>
+  @endsection
+
+  @entryPointStyles('app')
+  @entryPointScripts('app')
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script defer>
+    const url = new URL(window.location.href)
+    const urlParams = new URLSearchParams(url.search)
+    window.$params = Object.fromEntries(urlParams.entries())
+    if (url.search) {
+      urlParams.delete('autoplay')
+      url.search = urlParams.toString()
+      window.history.replaceState({}, document.title, url.toString())
+    }
+  </script>
+</head>
+<body>
+  <div id="context" x-data="{ state: {} }" @mounted="state = { ...state, [$event.detail.name]: $event.detail.data }" @call="state[$event.detail.namespace][$event.detail.name]($event.detail.args)"></div>
+
+  @!header.base()
+
+  @!section('hero')
+
+  <main class="container mx-auto px-4 sm:px-6">
+    @!section('content')
+  </main>
+
+  @!include('partials/footer')
+
+  @!section('scripts')
+  <script src="//unpkg.com/alpinejs" defer></script>
+</body>
+</html>
